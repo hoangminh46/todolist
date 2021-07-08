@@ -1,0 +1,696 @@
+:root {
+    --white: white;
+    --black: #333;
+    --header-bg: rgba(0,0,0,0.1);
+    --background: linear-gradient(90deg, rgba(150,206,231,1) 0%, rgb(95, 235, 167) 100%);
+  }
+  [data-theme="dark"] {
+    --white: #333;
+    --black: white;
+    --header-bg: rgba(255,255,255,0.2);
+    --background: linear-gradient(90deg, rgba(72,5,135,1) 0%, rgba(6,53,121,1) 100%);
+  }
+body{
+    font-family: 'Nunito', sans-serif;
+    background: var(--background);
+    color: var(--black);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+}
+a{
+    text-decoration: none;
+    color: #333;
+}
+h1,p{
+    text-align: center;
+}
+p{
+    margin: 0;
+}
+h1{
+    margin: 20px 0 0 0;
+    font-size: 60px;
+}
+.des{
+    font-size: 30px;
+    margin: 0;
+}
+.app{
+    
+    margin-top: 40px;
+}
+.to-do__input{
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+}
+.to-do__item{
+    position: relative;
+    width: 640px;
+    display: flex;
+    padding: 8px 0;
+    align-items: center;
+    justify-content: space-between;
+    background: #fff;
+    color: #333;
+    border-radius: 20px;
+    margin-bottom: 8px;
+}
+#input__text{
+    width: 500px;
+    height: 40px;
+    text-align: center;
+    border-radius: 20px;
+    margin-right: 20px;
+    border: 0px solid;
+    font-size: 24px;
+}
+#input__text:focus{
+    outline: none;
+}
+
+#input__time{
+    width: 130px;
+    height: 40px;
+    text-align: center;
+    border-radius: 20px;
+    margin-right: 20px;
+    border: 0px solid;
+    font-size: 16px;
+}
+#input__time:focus{
+    outline: none;
+}
+#item__text{
+    margin: 0;
+}
+button{
+    width: 150px;
+    font-family: 'Nunito', sans-serif;
+    border-radius: 20px;
+    border: none;
+    color: #fff;
+    font-weight: bold;
+    font-size: 16px;
+    background: linear-gradient(to right, red 50%, blue 50%);
+    background-size: 200% 100%;
+    background-position:left bottom;
+}
+button:hover{
+    border: 2px solid #fff;
+}
+
+#item__text{
+    padding: 10px 20px;
+}
+.to-do__list{
+    margin-top: 40px;
+    margin-bottom: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.cancel{
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    border-radius: 0 20px 20px 0;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    color: red;
+    transition:  all linear 0.2s;
+    border-left: 1.5px solid red;
+}
+
+.cancel:hover{
+    background: red;
+    color: #fff;
+}
+
+::placeholder{
+    font-size: 18px;
+    color: #333;
+    opacity: 0.5;
+}
+i{
+    font-size: 18px;
+    align-items: center;
+    margin-left: 6px;
+}
+
+.message{
+    position: absolute;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    font-size: 18px;
+    height: 60px;
+    width: 350px;
+    background-color: var(--header-bg);
+    color: var(--black);
+    
+}
+.message > a{
+    color: var(--black);
+    margin-left: 20px;
+}
+
+.message > a:hover{
+    color: red;
+}
+
+.message > a > i{
+    font-size: 24px;
+    pointer-events: none;
+}
+.message > a > p{
+    pointer-events: none;
+}
+.none{
+    display: none;
+}
+
+h1, .des{
+    animation: fadeIn 2s;
+}
+
+@keyframes fadeIn {
+    0% {opacity:0;}
+    100% {opacity:1;}
+}
+
+#date{
+    display: block;
+    font-size: 16px;
+    text-align: right;
+}
+#time{
+    display: block;
+    font-size: 16px;
+    margin: 0 20px 0 20px;
+}
+
+.real-time{
+    display: flex;
+    animation: fadeIn 2s;
+}
+
+.footer{
+    position: fixed;
+    bottom: 0;
+    z-index: 111;
+    width: 100%;
+    height: 30px;
+    text-align: center;
+    
+}
+footer > div:first-child{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    background: var(--header-bg);
+}
+
+.item-text{
+    display: flex;
+    width: 80%;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.item-text__des{
+    width: 400px;
+    padding-left: 20px;
+    word-wrap: break-word;
+}
+
+.item-text__des,.item-text__time{
+    font-size: 20px;
+}
+.done{
+    display: flex;
+    align-items: center;
+    border: 2px solid green;
+    align-items: center;
+    color: #333;
+    padding: 8px 12px;
+    border-radius: 20px;
+    margin-left: 20px;
+    margin-bottom: 8px;
+    cursor: pointer;
+    background: linear-gradient(to right, green 50%, white 50%);
+    background-size: 200% 100%;
+    background-position: right bottom;
+    transition: all .5s ease-out;
+}
+
+.done-2{
+    background-position: left bottom;
+    color: #fff;
+}
+.done >p{
+    width: 100px;
+}
+.item-layout{
+    display: flex;
+    align-items: center;
+}
+
+.header{
+    padding: 5px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    background-color: var(--header-bg);
+}
+.logo{
+    cursor: pointer;
+    font-family: 'Caveat', cursive;
+    margin-left: 20px;
+    font-size: 32px;
+}
+
+
+.theme-switch-wrapper {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    bottom: 40px;
+    right: 30px;
+    z-index: 1000;
+}
+.theme-switch {
+    display: inline-block;
+    height: 34px;
+    position: relative;
+    width: 60px;
+}
+.theme-switch input {
+    display:none;
+}
+.slider {
+    background-color: #999;
+    bottom: 0;
+    cursor: pointer;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transition: .4s;
+}
+.slider:before {
+    background-color: white;
+    bottom: 4px;
+    content: "";
+    height: 26px;
+    left: 4px;
+    position: absolute;
+    transition: .4s;
+    width: 26px;
+}
+input:checked + .slider {
+    background-color: #eee;
+}
+input:checked + .slider:before {
+    transform: translateX(26px);
+}
+.slider.round {
+    border-radius: 34px;
+}
+.slider.round:before {
+    border-radius: 50%;
+}
+.theme-switch-wrapper > p{
+    display: block;
+    margin-right: 10px;
+}
+
+
+@media only screen and (max-width: 950px) {
+    h1{
+        font-size: 40px;
+    }
+    .des{
+        font-size: 24px;
+    }
+    #date, #time{
+        font-size: 14px;
+    }
+    .footer{
+        font-size: 14px;
+    }
+    .theme-switch-wrapper > p{
+        font-size:  14px;
+    }
+    #input__text{
+        width: 400px;
+        font-size: 14px;
+    }
+    ::placeholder{
+        font-size: 14px;
+    }
+    #input__time{
+        width: 100px;
+        font-size: 12px;
+    }
+    .message{
+        height: 44px;
+        font-size: 16px;
+        width: 300px;
+    }
+    .message > a{
+        margin-left: 10px;
+    }
+    .to-do__item{
+        width: 520px;
+    }
+    .done{
+        width: 100px;
+        font-size: 14px;
+    }
+    .item-text__des, .item-text__time{
+        font-size: 16px;
+    }
+    .cancel > p{
+        font-size: 14px;
+    }
+    .item-text__des{
+        width: 340px;
+    }
+    button{
+        width: 120px;
+        font-size: 14px;
+    }
+}
+
+@media only screen and (max-width: 776px) {
+    h1{
+        font-size: 36px;
+    }
+    .des{
+        font-size: 20px;
+    }
+    .theme-switch-wrapper > p{
+        font-size:  14px;
+    }
+    #input__text{
+        width: 380px;
+        font-size: 14px;
+    }
+    ::placeholder{
+        font-size: 14px;
+    }
+    #input__time{
+        width: 84px;
+        font-size: 11px;
+    }
+    .message{
+        height: 36px;
+        font-size: 14px;
+        width: 240px;
+    }
+    .message > a{
+        margin-left: 6px;
+    }
+    .message > a > i{
+        font-size: 20px;
+    }
+    .to-do__item{
+        width: 520px;
+    }
+    .done{
+        width: 100px;
+        font-size: 14px;
+    }
+    .item-text__des, .item-text__time{
+        font-size: 16px;
+    }
+    .cancel > p{
+        font-size: 14px;
+    }
+    .item-text__des{
+        width: 340px;
+    }
+    button{
+        width: 120px;
+        font-size: 14px;
+    }
+}
+
+@media only screen and (max-width: 676px) {
+    h1{
+        font-size: 32px;
+    }
+    .des{
+        font-size: 20px;
+    }
+    #date, #time{
+        font-size: 12px;
+    }
+    .footer{
+        font-size: 12px;
+    }
+    .theme-switch-wrapper > p{
+        font-size:  12px;
+    }
+    #input__text{
+        width: 340px;
+        font-size: 12px;
+    }
+    ::placeholder{
+        font-size: 12px;
+    }
+    #input__time{
+        width: 80px;
+        font-size: 10px;
+    }
+    .message{
+        height: 40px;
+        font-size: 12px;
+        width: 250px;
+    }
+    .message > a{
+        margin-left: 10px;
+    }
+    .to-do__item{
+        width: 480px;
+    }
+    .done{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 20px;
+    }
+    .done > p{
+        display: none;
+    }
+    .done > i{
+        display: block;
+        margin: 0;
+        padding: 0;
+    }
+    .item-text__des, .item-text__time{
+        font-size: 16px;
+    }
+    .cancel > p{
+        font-size: 12px;
+    }
+    .item-text__des{
+        width: 310px;
+    }
+    button{
+        width: 100px;
+        font-size: 12px;
+    }
+}
+
+@media only screen and (max-width: 576px) {
+    h1{
+        font-size: 32px;
+    }
+    .des{
+        font-size: 20px;
+    }
+    #date, #time{
+        font-size: 10px;
+    }
+    #time{
+        margin: 0 4px;
+    }
+    .footer{
+        font-size: 10px;
+    }
+    .theme-switch-wrapper > p{
+        font-size:  10px;
+    }
+    #input__text{
+        width: 340px;
+        font-size: 12px;
+    }
+    ::placeholder{
+        font-size: 12px;
+    }
+    #input__time{
+        width: 80px;
+        font-size: 10px;
+    }
+    .message{
+        height: 40px;
+        font-size: 10px;
+        width: 180px;
+    }
+    .message > a{
+        margin-left: 6px;
+    }
+    .to-do__item{
+        width: 440px;
+    }
+    .done{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 20px;
+    }
+    .done > p{
+        display: none;
+    }
+    .done > i{
+        display: block;
+        margin: 0;
+        padding: 0;
+    }
+    .item-text__des, .item-text__time{
+        font-size: 16px;
+    }
+    .cancel{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .cancel > i{
+        display: block;
+        margin: 0;
+        padding: 0;
+    }
+    .cancel > p{
+        display: none;
+    }
+    .item-text__des{
+        width: 280px;
+    }
+    .to-do__input{
+        position: relative;
+        margin-bottom: 70px;
+    }
+    button{
+        position: absolute;
+        top: 130%;
+        height: 36px;
+        width: 90px;
+        font-size: 10px;
+    }
+}
+
+@media only screen and (max-width: 415px) {
+    body{
+        width: 100%;
+    }
+    h1{
+        font-size: 20px;
+    }
+    .des{
+        font-size: 20px;
+    }
+    #date, #time{
+        display: none;
+    }
+    .footer{
+        font-size: 10px;
+    }
+    .theme-switch-wrapper{
+        right: 20px;
+        bottom: 36px;
+    }
+    .theme-switch-wrapper > p{
+        font-size:  10px;
+    }
+    #input__text{
+        width: 240px;
+        font-size: 12px;
+    }
+    ::placeholder{
+        font-size: 12px;
+    }
+    #input__time{
+        width: 70px;
+        font-size: 8px;
+    }
+    .message{
+        top: 55px;
+        height: 36px;
+        font-size: 10px;
+        width: 180px;
+    }
+    .message > a{
+        margin-left: 6px;
+    }
+    .to-do__item{
+        width: 250px;
+    }
+    .done{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 10px;
+    }
+    .done > p{
+        display: none;
+    }
+    .done > i{
+        display: block;
+        margin: 0;
+        padding: 0;
+    }
+    .item-text__des, .item-text__time{
+        font-size: 10px;
+    }
+    .cancel{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .cancel > i{
+        display: block;
+        margin: 0;
+        padding: 0;
+    }
+    .cancel > p{
+        display: none;
+    }
+    .item-text__des{
+        width: 146px;
+    }
+    .to-do__input{
+        position: relative;
+        margin-bottom: 70px;
+    }
+    button{
+        position: absolute;
+        top: 130%;
+        height: 36px;
+        width: 90px;
+        font-size: 10px;
+    }
+    .logo{
+        margin: 0 auto;
+    }
+}
